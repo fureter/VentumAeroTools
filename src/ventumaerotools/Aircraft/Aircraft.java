@@ -5,6 +5,8 @@
  */
 package ventumaerotools.Aircraft;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author FurEt
@@ -15,4 +17,7 @@ public class Aircraft {
         public Wing mainWing;
         public Wing horzStab;
         public Wing vertStab;
+        public Fuselage fuselage;
+        public ArrayList<Propulsion> propulsion;
+        
 }

@@ -27,9 +27,13 @@ public class Wing {
     public double[] sweep;
     public double[] dihedral;
     
-    public Airfoil[] airfoils;
+    public double e;
+    public double K;
     
-    public Wing(int seg, double span, double[] chord, double[] twist, double[] position, double[] sweep, double[] dihedral, Airfoil[] airfoils){
+    public Airfoil[] airfoils;
+    public ControlSurface controlSurface;
+    
+    public Wing(int seg, double span, double[] chord, double[] twist, double[] position, double[] sweep, double[] dihedral, Airfoil[] airfoils, double e){
         this.segments = seg;
         this.span = span;
         this.chord = chord;
@@ -37,6 +41,7 @@ public class Wing {
         this.position = position;
         this.sweep = sweep;
         this.dihedral = dihedral;
+        this.e = e;
         
         this.area = 0;
         this.MAC = 0;
@@ -51,6 +56,8 @@ public class Wing {
         this.taperRatio = chord[chord.length-1]/chord[0];
         
         this.airfoils = airfoils;
+        
+        this.K = 1/(Math.PI*this.e*this.aspectRatio);
     }
     
     public String toString(){
