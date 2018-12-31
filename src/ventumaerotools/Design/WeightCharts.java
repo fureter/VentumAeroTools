@@ -9,12 +9,6 @@ package ventumaerotools.Design;
  *
  * @author FurEt
  */
-public class Constraint {
-    public double altitude;
-    public double velocity;
+public class WeightCharts {
     
-    public Constraint(double altitude, double velocity){
-        this.altitude = altitude;
-        this.velocity = velocity;
-    }
 }

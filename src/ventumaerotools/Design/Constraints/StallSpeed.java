@@ -16,8 +16,8 @@ public class StallSpeed extends Constraint{
     
     public double CLmax;
     
-    public StallSpeed(double alt, double massFrac, double vel, double CLmax){
-        super(alt,massFrac,vel);
+    public StallSpeed(double alt, double vel, double CLmax){
+        super(alt,vel);
         this.CLmax =  CLmax;
     }
     

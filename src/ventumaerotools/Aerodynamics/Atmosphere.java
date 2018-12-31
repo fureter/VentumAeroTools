@@ -10,6 +10,7 @@ package ventumaerotools.Aerodynamics;
  * @author FurEt
  */
 public class Atmosphere {
+    public static double g = 9.81;
     public static double getDensity(double altitude){
         if(altitude < 3000){
             double density = 1.225 - (altitude-0)*(1.225-0.84)/(0-3000);
