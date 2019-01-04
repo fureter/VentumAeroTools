@@ -9,12 +9,16 @@ package ventumaerotools.Design;
  *
  * @author FurEt
  */
-public class Constraint {
+public abstract class Constraint {
     public double altitude;
     public double velocity;
+    public String title;
     
-    public Constraint(double altitude, double velocity){
+    public Constraint(double altitude, double velocity, String title){
         this.altitude = altitude;
         this.velocity = velocity;
+        this.title = title;
     }
+    
+    public abstract double[] weightToPowerProp(double[] WS);
 }

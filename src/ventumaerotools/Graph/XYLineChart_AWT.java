@@ -17,10 +17,10 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.xy.XYDataset; 
 import org.jfree.data.xy.XYSeries; 
 import org.jfree.ui.ApplicationFrame; 
-import org.jfree.ui.RefineryUtilities; 
 import org.jfree.chart.plot.XYPlot; 
 import org.jfree.chart.ChartFactory; 
 import org.jfree.chart.plot.PlotOrientation; 
+import org.jfree.chart.plot.SeriesRenderingOrder;
 import org.jfree.data.xy.XYSeriesCollection; 
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 
@@ -39,6 +39,8 @@ public class XYLineChart_AWT extends ApplicationFrame {
       ChartPanel chartPanel = new ChartPanel( xylineChart );
       chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 367 ) );
       final XYPlot plot = xylineChart.getXYPlot( );
+      
+      plot.setSeriesRenderingOrder(SeriesRenderingOrder.FORWARD);
       
       XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer( );
       renderer.setSeriesPaint( 0 , Color.RED );

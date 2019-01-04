@@ -12,6 +12,11 @@ import java.util.ArrayList;
  * @author FurEt
  */
 public class Aircraft {
+        public String type;
+        public double WSDesign;
+        public double WPDesign;
+        public double TWDesign;
+    
         public double mass;
         public double[][] inertia;
         public Wing mainWing;
@@ -19,5 +24,11 @@ public class Aircraft {
         public Wing vertStab;
         public Fuselage fuselage;
         public ArrayList<Propulsion> propulsion;
+        
+        
+        //Add weightchart 
+        public void addTopology(){
+            
+        }
         
 }

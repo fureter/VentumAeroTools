@@ -19,8 +19,8 @@ public class TakeOff extends Constraint{
     public double sTO;
     public double CL_R;
 
-    public TakeOff(double mu, double nuPropeller, double CD_G, double sTO, double CL_R, double altitude, double velocity) {
-        super(altitude, velocity);
+    public TakeOff(double mu, double nuPropeller, double CD_G, double sTO, double CL_R, double altitude, double velocity,String title) {
+        super(altitude, velocity,title);
         this.mu = mu;
         this.nuPropeller = nuPropeller;
         this.CD_G = CD_G;

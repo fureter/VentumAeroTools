@@ -17,8 +17,8 @@ public class MaxSpeed extends Constraint{
     public double nuPropeller;
     public double K;
     
-    public MaxSpeed(double alt, double vel, double CD0, double nu, double K){
-        super(alt,vel);
+    public MaxSpeed(double alt, double vel, double CD0, double nu, double K, String title){
+        super(alt,vel,title);
         this.CD0 = CD0;
         this.nuPropeller = nu;
         this.K = K;

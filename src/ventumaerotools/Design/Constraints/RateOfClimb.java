@@ -19,8 +19,8 @@ public class RateOfClimb extends Constraint{
     public double LDmax;
     public double K;
     
-    public RateOfClimb(double nuPropeller, double CD_0, double LDmax, double K, double altitude, double velocity) {
-        super(altitude, velocity);
+    public RateOfClimb(double nuPropeller, double CD_0, double LDmax, double K, double altitude, double velocity,String title) {
+        super(altitude, velocity,title);
         this.nuPropeller = nuPropeller;
         this.CD_0 = CD_0;
         this.LDmax = LDmax;
