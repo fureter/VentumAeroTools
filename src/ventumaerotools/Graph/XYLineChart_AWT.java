@@ -7,7 +7,7 @@ package ventumaerotools.Graph;
 
 /**
  *
- * @author FurEt
+ * @author FurEter
  */
 import java.awt.Color; 
 import java.awt.BasicStroke; 
@@ -43,12 +43,6 @@ public class XYLineChart_AWT extends ApplicationFrame {
       plot.setSeriesRenderingOrder(SeriesRenderingOrder.FORWARD);
       
       XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer( );
-      renderer.setSeriesPaint( 0 , Color.RED );
-      renderer.setSeriesPaint( 1 , Color.GREEN );
-      renderer.setSeriesPaint( 2 , Color.YELLOW );
-      renderer.setSeriesStroke( 0 , new BasicStroke( 4.0f ) );
-      renderer.setSeriesStroke( 1 , new BasicStroke( 3.0f ) );
-      renderer.setSeriesStroke( 2 , new BasicStroke( 2.0f ) );
       plot.setRenderer( renderer ); 
       setContentPane( chartPanel ); 
    }
@@ -57,6 +51,13 @@ public class XYLineChart_AWT extends ApplicationFrame {
         this.dataset = new XYSeriesCollection( );                    
         return dataset;
    }
+   
+   /**
+    * 
+    * @param WS Wing loading design space
+    * @param WP power loading for constraint corresponding to wing loading
+    * @param title title of the constraint e.g. stall speed = 5 m/s
+    */
    public void addToDataset(double[] WS, double[] WP,String title ) {
       final XYSeries data = new XYSeries( title );          
       for(int i = 0; i < WS.length;i++){

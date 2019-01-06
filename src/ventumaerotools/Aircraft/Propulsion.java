@@ -7,8 +7,9 @@ package ventumaerotools.Aircraft;
 
 /**
  *
- * @author FurEt
+ * @author FurEter
  */
 public class Propulsion {
-    
+    public String type;
+    public double totalEfficency;
 }

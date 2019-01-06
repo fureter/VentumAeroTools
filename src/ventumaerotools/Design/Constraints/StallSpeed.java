@@ -9,8 +9,8 @@ import ventumaerotools.Aerodynamics.Atmosphere;
 import ventumaerotools.Design.Constraint;
 
 /**
- *
- * @author FurEt
+ * @reference  Aircraft Design: A systems Engineering Approach, Mohammad H Sadraey
+ * @author FurEter
  */
 public class StallSpeed extends Constraint{
     
@@ -25,6 +25,11 @@ public class StallSpeed extends Constraint{
         return 0.5*Atmosphere.getDensity(super.altitude)*Math.pow(super.velocity,2)*this.CLmax;
     }
     
+    /**
+     * 
+     * @param WS Wing loading design space
+     * @return array holding required Power loading to meet the constraint at the given wing loading
+     */
     public double[] weightToPowerProp(double[] WS){
         double[] WP = new double[WS.length];
         for(int i = 0; i< WS.length;i++){

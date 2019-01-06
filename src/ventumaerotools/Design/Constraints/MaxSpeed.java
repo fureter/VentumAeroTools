@@ -9,12 +9,15 @@ import ventumaerotools.Aerodynamics.Atmosphere;
 import ventumaerotools.Design.Constraint;
 
 /**
- *
- * @author FurEt
+ * @reference  Aircraft Design: A systems Engineering Approach, Mohammad H Sadraey
+ * @author FurEter
  */
 public class MaxSpeed extends Constraint{
+    //Zero lift coefficient of drag
     public double CD0;
+    //Propeller efficency
     public double nuPropeller;
+    //Main wing planform efficency coefficent
     public double K;
     
     public MaxSpeed(double alt, double vel, double CD0, double nu, double K, String title){
@@ -24,6 +27,11 @@ public class MaxSpeed extends Constraint{
         this.K = K;
     }
     
+    /**
+     * 
+     * @param WS Wing loading design space
+     * @return array holding required Power loading to meet the constraint at the given wing loading
+     */
     public double[] weightToPowerProp(double[] WS){
         double[] WP = new double[WS.length];
         for(int i = 0; i< WS.length;i++){

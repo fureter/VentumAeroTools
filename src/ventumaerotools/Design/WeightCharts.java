@@ -7,7 +7,7 @@ package ventumaerotools.Design;
 
 /**
  *
- * @author FurEt
+ * @author FurEter
  */
 public class WeightCharts {
     

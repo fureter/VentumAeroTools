@@ -9,6 +9,7 @@ import ventumaerotools.Aerodynamics.Airfoil;
 import ventumaerotools.Aircraft.Aircraft;
 import ventumaerotools.Aircraft.Wing;
 import ventumaerotools.Design.ConstraintAnalysis;
+import ventumaerotools.Design.WeightEstimation;
 /**
  *
  * @author FurEt
@@ -22,30 +23,39 @@ public class VentumAeroTools {
     private static double payload;                 //max Aircraft Payload
     
     public static void main(String[] args) {
-        range = 20;
+        range = 2000;
         payload = 1;
-        double span = 1.35;
-        double[] chord = new double[]{0.11,0.11};
-        double[] position = new double[]{0.18,0.0,0.05};
-        double[] twist = new double[]{0.0,0.0};
-        double[] sweep = new double[]{0.0,0.0};
-        double[] dihedral = new double[]{0.0,0.0};
-        Airfoil[] airfoils = new Airfoil[2];
-        Wing w = new Wing(2,span,chord,twist,position,sweep,dihedral,airfoils,0.9);
         
-        System.out.println(w.toString());
-        double[] WS = new double[200];
+        //Create wing loading design space
+        double[] WS = new double[500];
         for(int i = 0; i <WS.length;i++){
-            WS[i] = (i+1)*0.25;
+            WS[i] = (i+1)*0.1;
         }
+        
+        //create Constraint Analysis
         ConstraintAnalysis cs = new ConstraintAnalysis();
-        cs.initilize(WS);
+        //Initialize Constraint Analysis
+        cs.tester(WS);
+        //Create Aircraft from Constraint Analysis Design space
         Aircraft a = cs.createPropAircraft();
+        //Graph the Constraint Design Space
         cs.graphConstraints();
+        a.designPayload = payload;
+        a.designRange = range;
+        a.addTopology();
+        WeightEstimation.preliminaryWeightEstiamte(a);
+        System.out.println(a.mass);
         
         
     }
     
+    /**
+     * <h2> Finds the maximum value from the given array and returns it</h2>
+     * 
+     * @Author FurEter
+     * @param a double[] 
+     * @return double max value
+    **/
     public static double max(double[] a){
         double max = 0;
         for(int i = 0; i < a.length;i++){

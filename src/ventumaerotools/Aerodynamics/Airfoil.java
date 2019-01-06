@@ -7,7 +7,7 @@ package ventumaerotools.Aerodynamics;
 
 /**
  *
- * @author FurEt
+ * @author FurEter
  */
 public class Airfoil {
     

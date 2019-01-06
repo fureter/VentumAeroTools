@@ -7,7 +7,7 @@ package ventumaerotools.Aircraft;
 
 /**
  *
- * @author FurEt
+ * @author FurEter
  */
 public class ControlSurface {
     
