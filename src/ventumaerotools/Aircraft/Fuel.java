@@ -12,4 +12,6 @@ package ventumaerotools.Aircraft;
 public class Fuel {
     public String fuelType;
     public double specificEnergy;
+    
+    public double mBattery;
 }

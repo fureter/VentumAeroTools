@@ -12,4 +12,9 @@ package ventumaerotools.Aircraft;
 public class Propulsion {
     public String type;
     public double totalEfficency;
+    
+    public double mController;
+    public double mMotor;
+    public double mProp;
+    
 }

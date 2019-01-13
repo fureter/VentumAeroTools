@@ -5,6 +5,7 @@
  */
 package ventumaerotools.Design;
 
+import java.util.Scanner;
 import ventumaerotools.Aerodynamics.Atmosphere;
 import ventumaerotools.Aircraft.Aircraft;
 import ventumaerotools.Aircraft.Propulsion;
@@ -22,12 +23,35 @@ public class WeightEstimation {
         }
         averageEfficency /= a.propulsion.size();
         if(a.fuel.fuelType.equals("battery")){
-            double bFrac = ((a.designRange*Atmosphere.g)/(a.fuel.specificEnergy*averageEfficency))/a.CLCD;
-            double eFrac = 0.545547449;
+            double eFrac = 0;
+            double bFrac = 0;
+            
+            do{
+                bFrac = ((a.designRange*Atmosphere.g)/((a.fuel.specificEnergy*3600)*averageEfficency))/a.CLCD;
+
+                System.out.println("Battery Mass Fraction = " + bFrac);
+                eFrac = 0.65;    //Start with large empty mass estimate
+                System.out.println("Empty Mass Fraction = " + eFrac);
+                if(bFrac > (1-eFrac)){
+                    System.out.println("Range requirements cannot be fullfilled with specific Energy of battery, average Efficiency of powerplant, and Estimated CL/CD of the aircraft");
+                    System.out.println("Please Enter Lower Range");
+                    Scanner input = new Scanner(System.in);
+                    a.designRange = input.nextDouble();
+                }
+            }while(bFrac > (1-eFrac));
             double mass = a.designPayload/(1-(eFrac+bFrac));
             a.mass = mass;
+            
         }else{
                     
         }
+    }
+    
+    public static void raymerWeightEstimation(Aircraft a){
+        
+    }
+    
+    public static void gundlachWeightEstimation(Aircraft a){
+        
     }
 }

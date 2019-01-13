@@ -5,10 +5,9 @@
  */
 package ventumaerotools;
 
-import ventumaerotools.Aerodynamics.Airfoil;
 import ventumaerotools.Aircraft.Aircraft;
-import ventumaerotools.Aircraft.Wing;
 import ventumaerotools.Design.ConstraintAnalysis;
+import ventumaerotools.Design.PreliminaryDesign;
 import ventumaerotools.Design.WeightEstimation;
 /**
  *
@@ -23,7 +22,7 @@ public class VentumAeroTools {
     private static double payload;                 //max Aircraft Payload
     
     public static void main(String[] args) {
-        range = 2000;
+        range = 200000;
         payload = 1;
         
         //Create wing loading design space
@@ -42,9 +41,11 @@ public class VentumAeroTools {
         cs.graphConstraints();
         a.designPayload = payload;
         a.designRange = range;
-        a.addTopology();
+        PreliminaryDesign pd = new PreliminaryDesign();
+        a.addTopologyUserInput();
         WeightEstimation.preliminaryWeightEstiamte(a);
-        System.out.println(a.mass);
+        System.out.println("Preliminary Mass Estimate = " + a.mass + "kg");
+        System.out.println(a.topologyToString());
         
         
     }

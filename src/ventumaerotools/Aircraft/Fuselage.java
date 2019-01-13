@@ -10,5 +10,10 @@ package ventumaerotools.Aircraft;
  * @author FurEter
  */
 public class Fuselage {
+    public String type;
     
+    public double length;
+    public double[] height;
+    public double[] width;
+    public String crossSectionApproximation;
 }

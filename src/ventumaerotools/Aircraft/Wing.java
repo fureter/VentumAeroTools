@@ -12,6 +12,8 @@ import ventumaerotools.Aerodynamics.Airfoil;
  * @author FurEter
  */
 public class Wing {
+    public String type;
+    
     //Number of cross sections wing is broken into, minimum is 2 (root and tip)
     public int segments;
     
@@ -88,6 +90,10 @@ public class Wing {
         this.airfoils = airfoils;
         
         this.K = 1/(Math.PI*this.e*this.aspectRatio);
+    }
+    
+    public Wing(){
+        
     }
     
     /**
