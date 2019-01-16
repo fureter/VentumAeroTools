@@ -7,6 +7,7 @@ package ventumaerotools.Aircraft;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import ventumaerotools.Design.ConstraintAnalysis;
 
 /**
  * <h1>Aircraft topology and construction is stored here along with design specifications gathered from constraint analysis</h1>
@@ -46,13 +47,21 @@ public class Aircraft {
     // Power source for the aircraft, battery, gasoline, et cetera
     public Fuel fuel;
 
+    //Max CL/CD for aircraft
     public double CLCD;
+    
+    //Ultimate load Factor
+    public double Nz;
+    
+    public ConstraintAnalysis constraint;
     
     public void addTopologyWeightMatrix(){
         //TO-DO Add weightchart 
     }
     
     public void addTopologyUserInput(){
+        Nz = 5;
+        
         
         Scanner input = new Scanner(System.in);
         String s = "";
@@ -103,6 +112,7 @@ public class Aircraft {
         mainWing.add(new Wing());
         mainWing.get(0).flap = new Flap();
         mainWing.get(0).flap.type = s;
+        mainWing.get(0).aspectRatio = constraint.AR;
         
         
         //tails
@@ -141,6 +151,57 @@ public class Aircraft {
         s = input.nextLine();
         landingGear = new LandingGear();
         landingGear.type = s;
+        
+        
+    }
+    
+    public void addTopologyTester(){
+        Nz = 5;
+
+
+            fuel = new Fuel();
+            fuel.fuelType = "battery";
+            double E = 120;
+            fuel.specificEnergy = E;
+        //propulsion
+
+        propulsion = new ArrayList<>();
+
+            propulsion.add(new Propulsion());
+
+            propulsion.get(0).type = "propeller";
+            propulsion.get(0).totalEfficency = 0.65;
+
+        
+        //fuselage
+
+            fuselage = new Fuselage();
+            fuselage.type = "conventional";
+            fuselage.crossSectionApproximation = "circle";
+        
+        //flap
+        mainWing = new ArrayList<>();
+        mainWing.add(new Wing());
+        mainWing.get(0).flap = new Flap();
+        mainWing.get(0).flap.type = "plain";
+        mainWing.get(0).aspectRatio = constraint.AR;
+        
+        
+        //tails
+
+            horzStab =  new ArrayList<>();
+            horzStab.add(new Wing());
+            horzStab.get(0).type = "aft";
+
+        
+
+            vertStab =  new ArrayList<>();
+            vertStab.add(new Wing());
+            vertStab.get(0).type = "single";
+        
+        //Landing Gear
+        landingGear = new LandingGear();
+        landingGear.type = "none";
         
         
     }

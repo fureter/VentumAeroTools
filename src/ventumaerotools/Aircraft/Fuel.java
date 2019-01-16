@@ -14,4 +14,5 @@ public class Fuel {
     public double specificEnergy;
     
     public double mBattery;
+    public double bFrac;
 }

@@ -59,6 +59,8 @@ public class ConstraintAnalysis {
     // intercept point for design choice [0] = WS [1] = WP
     public double[] interceptPoint;
     
+    public double maxVel;
+    
     
     /**
      * <h2>initialization of Constraints, polls user for input, currently supports 4 constraints (max speed, stall speed, rate of climb, take off distance)</h2>
@@ -80,6 +82,8 @@ public class ConstraintAnalysis {
         System.out.println("Enter desired Aspect Ratio");
         AR = input.nextDouble();
         K = 1/(Math.PI*AR*e);
+        System.out.println("Enter max velocity for dive");
+        maxVel = input.nextDouble();
         input.nextLine();
         while(add){
             System.out.println("Add Constraint(Y/N)");
@@ -151,18 +155,18 @@ public class ConstraintAnalysis {
         this.WS = WS;
         boolean add = true;
         CD_0 = 0.05;
-        LDmax = 9;
+        LDmax = 11;
         nuProp = 0.6;;
         e = 0.8;
-        AR = 10;
+        AR = 12;
         K = 1/(Math.PI*AR*e);
         
         double altitude = 0;
         double velocity = 5;
         CD_TO = 0.08;
-        CL_TO = 1.1;
+        CL_TO = 1.4;
         mu = 0.1;
-        sTO = 15;
+        sTO = 20;
         CL_R = 2*0.4*Atmosphere.g/(Atmosphere.getDensity(altitude)*1*Math.pow(velocity*1.2, 2));
         CD_G = CD_TO-mu*CL_TO;
         String title = "Take off distance = " + sTO + " at " + altitude + "m";
@@ -192,23 +196,25 @@ public class ConstraintAnalysis {
         constraints.add(climb);
         
         altitude = 0;
-        velocity = 15;
+        velocity = 30;
         title = "Max speed = " + velocity + " at " + altitude + "m";
         MaxSpeed vm = new MaxSpeed(altitude,velocity,CD_0,nuProp,K,title);
         constraints.add(vm);
                     
         altitude = 1000;
-        velocity = 5;
+        velocity = 15;
         title = "Max speed = " + velocity + " at " + altitude + "m";
         vm = new MaxSpeed(altitude,velocity,CD_0,nuProp,K,title);
         constraints.add(vm);
         
         altitude = 100;
-        velocity = 5;
+        velocity = 10;
         title = "Stall Speed = " + velocity + " at " + altitude + "m";
-        double CLmax = 1.2;
+        double CLmax = 1.6;
         StallSpeed st = new StallSpeed(altitude,velocity,CLmax,title);
         constraints.add(st);
+        
+        maxVel = 30;
     }
     
     /**

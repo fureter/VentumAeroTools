@@ -51,6 +51,8 @@ public class Wing {
     public ControlSurface controlSurface;
     //Flaps attached to the wing
     public Flap flap;
+    //average t/c for wing
+    public double tc;
     
     
     /**

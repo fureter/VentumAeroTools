@@ -22,13 +22,13 @@ public class VentumAeroTools {
     private static double payload;                 //max Aircraft Payload
     
     public static void main(String[] args) {
-        range = 200000;
-        payload = 1;
+        range = 100000;
+        payload = 2;
         
         //Create wing loading design space
-        double[] WS = new double[500];
+        double[] WS = new double[1000];
         for(int i = 0; i <WS.length;i++){
-            WS[i] = (i+1)*0.1;
+            WS[i] = (i+1)*0.5;
         }
         
         //create Constraint Analysis
@@ -39,13 +39,15 @@ public class VentumAeroTools {
         Aircraft a = cs.createPropAircraft();
         //Graph the Constraint Design Space
         cs.graphConstraints();
+        a.constraint = cs;
         a.designPayload = payload;
         a.designRange = range;
         PreliminaryDesign pd = new PreliminaryDesign();
-        a.addTopologyUserInput();
+        a.addTopologyTester();
         WeightEstimation.preliminaryWeightEstiamte(a);
         System.out.println("Preliminary Mass Estimate = " + a.mass + "kg");
         System.out.println(a.topologyToString());
+        pd.preliminaryDesignLoop(a);
         
         
     }
