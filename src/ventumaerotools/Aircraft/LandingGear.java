@@ -11,4 +11,6 @@ package ventumaerotools.Aircraft;
  */
 public class LandingGear {
     public String type;
+    
+    public double mass;
 }

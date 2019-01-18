@@ -10,5 +10,5 @@ package ventumaerotools.Aircraft;
  * @author FurEter
  */
 public class ControlSurface {
-    
+    public double mass;
 }

@@ -11,4 +11,6 @@ package ventumaerotools.Aircraft;
  */
 public class Flap {
     public String type;
+    
+    public double mass;
 }

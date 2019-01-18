@@ -16,4 +16,6 @@ public class Fuselage {
     public double[] height;
     public double[] width;
     public String crossSectionApproximation;
+    
+    public double mass;
 }

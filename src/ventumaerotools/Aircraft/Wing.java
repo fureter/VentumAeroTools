@@ -54,6 +54,8 @@ public class Wing {
     //average t/c for wing
     public double tc;
     
+    public double mass;
+    
     
     /**
      *  <h2>Constructor for wing class, calculates wing area and MAC from input segments</h2>

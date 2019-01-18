@@ -64,28 +64,35 @@ public class WeightEstimation {
         
         for(int i = 0; i < a.mainWing.size();i++){
             // metric to imperial back to metric
-            mWing += (0.0038*Math.pow((a.Nz*a.mass*2.20462),1.06)*Math.pow(a.mainWing.get(i).aspectRatio,0.38)*Math.pow(a.mainWing.get(i).area*10.7639,0.25)
+            double mW = (0.0038*Math.pow((a.Nz*a.mass*2.20462),1.06)*Math.pow(a.mainWing.get(i).aspectRatio,0.38)*Math.pow(a.mainWing.get(i).area*10.7639,0.25)
                     *Math.pow((1+a.mainWing.get(i).taperRatio),0.21)*Math.pow(a.mainWing.get(i).tc,0.14))*0.453592;
+            mWing += mW;
+            a.mainWing.get(i).mass = mW;
         }
+        
         //Howe Method
         if(a.horzStab != null){
             for(int i = 0; i < a.horzStab.size();i++){
                 //Metric
-                mHorzStab +=  (0.047*a.constraint.maxVel*Math.pow((a.horzStab.get(i).area),1.24));   
+                double mH = (0.047*a.constraint.maxVel*Math.pow((a.horzStab.get(i).area),1.24));
+                mHorzStab +=  mH;
+                a.horzStab.get(i).mass = mH;
             }
         }
+        
         //Howe method
         if(a.vertStab != null){
             for(int i = 0; i < a.vertStab.size();i++){
                 //todo add k for tail types
                 //metric
-                mVertStab +=  (0.065*a.constraint.maxVel*Math.pow(a.vertStab.get(i).area,1.15));
+                double mV =(0.065*a.constraint.maxVel*Math.pow(a.vertStab.get(i).area,1.15));
+                mVertStab +=  mV;
+                a.vertStab.get(i).mass = mV;
             }
         }
         
         if(a.fuselage != null){
             System.out.println("Fuselage Length: " + a.fuselage.length);
-            System.out.println("Dive vel: " + a.constraint.maxVel);
             double fm = 1.07;
             double fn = 1.04;
             double fv = 1;
@@ -93,9 +100,10 @@ public class WeightEstimation {
             double ft = 1;
             // metric to imperial back to metric
             mFuselage += (0.5257*fm*fn*fp*fv*ft*Math.pow(a.fuselage.length*3.28084, 0.3796)*Math.pow((mPayload*2.20462+mControl*2.20462+mBattery*2.20462)*a.Nz,0.4863)*Math.pow(1.2*a.constraint.maxVel*1.94384*1.2/100,2))*0.453592;
+            a.fuselage.mass = mFuselage;
         }
         
-        System.out.println("mFuselage: " + mFuselage);
+        System.out.println("\nmFuselage: " + mFuselage);
         System.out.println("mMainWing: " + mWing);
         System.out.println("mHorzStab: " + mHorzStab);
         System.out.println("mVertStab: " + mVertStab+"\n");
