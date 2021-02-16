@@ -170,9 +170,13 @@ public class Aircraft {
             propulsion.add(new Propulsion());
 
             propulsion.get(0).type = "propeller";
-            propulsion.get(0).totalEfficency = 0.65;
+            propulsion.get(0).totalEfficency = 0.55;
+            
+            propulsion.add(new Propulsion());
 
-        
+            propulsion.get(1).type = "propeller";
+            propulsion.get(1).totalEfficency = 0.55;
+
         //fuselage
 
             fuselage = new Fuselage();
@@ -183,7 +187,7 @@ public class Aircraft {
         mainWing = new ArrayList<>();
         mainWing.add(new Wing());
         mainWing.get(0).flap = new Flap();
-        mainWing.get(0).flap.type = "plain";
+        mainWing.get(0).flap.type = "slotted";
         mainWing.get(0).aspectRatio = constraint.AR;
         
         
@@ -209,16 +213,26 @@ public class Aircraft {
     public String topologyToString(){
         String s = "";
         s += "Number of Main Wings = " + mainWing.size() + "\n";
+        for(int i = 0; i < mainWing.size();i++){
+                s += "Wing " + i+1 +" Span: " + mainWing.get(i).span + " Chord: " + mainWing.get(i).MAC + " Area: " + mainWing.get(i).area + "\n";
+                if(mainWing.get(i).airfoils != null){
+                    for(int j = 0; j < mainWing.get(i).airfoils.length;j++){
+                        s+= "Airfoil " + j + ": " + mainWing.get(i).airfoils[j].name + "\n";
+                    }
+                }
+            }
         if(horzStab != null){
             s += "Number of Horizontal Stabilizers = " + horzStab.size() + "\n";
             for(int i = 0; i < horzStab.size();i++){
                 s += "Horiztal Stabilizer number " + i+1 + " is of " + horzStab.get(i).type + " Configuration\n";
+                s += "Horz stab " + i+1 +" Span: " + horzStab.get(i).span + " Chord: " + horzStab.get(i).MAC + " Area: " + horzStab.get(i).area + "\n";
             }
         }
         if(vertStab != null){
             s += "Number of Vertical Stabilizers = " + vertStab.size() + "\n";
             for(int i = 0; i < vertStab.size();i++){
                 s += "Vertical Stabilizer number " + i+1 + " is of " + vertStab.get(i).type + " Configuration\n";
+                s += "Vert stab " + i+1 +" Span: " + vertStab.get(i).span + " Chord: " + vertStab.get(i).MAC + " Area: " + vertStab.get(i).area + "\n";
             }
         }
         

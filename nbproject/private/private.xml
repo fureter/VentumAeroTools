@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aerodynamics/Airfoil.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/Constraints/StallSpeed.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Graph/XYLineChart_AWT.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aircraft/Fuselage.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aerodynamics/Stability.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Numerical/Numerical.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aircraft/Fuel.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aerodynamics/Performance.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/PreliminaryDesign.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/VentumAeroTools.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/WeightMatricies.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aircraft/ControlSurface.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/Constraint.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aircraft/Wing.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aircraft/Aircraft.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/Constraints/RateOfClimb.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aircraft/Propulsion.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aircraft/Flap.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aerodynamics/Atmosphere.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/Constraints/MaxSpeed.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/ConstraintAnalysis.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Aircraft/LandingGear.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/Constraints/TakeOff.java</file>
+            <file>file:/C:/Users/FurEt/Documents/NetBeansProjects/VentumAeroTools/src/ventumaerotools/Design/WeightEstimation.java</file>
+        </group>
+    </open-files>
+</project-private>

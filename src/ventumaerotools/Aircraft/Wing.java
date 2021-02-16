@@ -33,7 +33,7 @@ public class Wing {
     
     //Array giving wing twist relative to the fuselage x-axis at each segment cross section (deg°)
     public double[] twist;
-    //Relative position of the front of the wing root from the nose of the aircraft
+    //Nomralized position of the front of the wing root from the nose of the aircraft in percent
     public double[] position;
     //Sweep of the wing section for each segment, relative to c/4 (deg°)
     public double[] sweep;
@@ -97,6 +97,10 @@ public class Wing {
     }
     
     public Wing(){
+        
+    }
+    
+    public void reCalc(){
         
     }
     

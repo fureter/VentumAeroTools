@@ -15,6 +15,7 @@ import ventumaerotools.Design.Constraints.RateOfClimb;
 import ventumaerotools.Design.Constraints.StallSpeed;
 import ventumaerotools.Design.Constraints.TakeOff;
 import ventumaerotools.Graph.XYLineChart_AWT;
+import ventumaerotools.Numerical.Numerical;
 import ventumaerotools.VentumAeroTools;
 
 /**
@@ -59,7 +60,11 @@ public class ConstraintAnalysis {
     // intercept point for design choice [0] = WS [1] = WP
     public double[] interceptPoint;
     
+    public double stallVel;
+    public double cruiseVel;
     public double maxVel;
+    
+    public double cruiseAlt;
     
     
     /**
@@ -84,6 +89,10 @@ public class ConstraintAnalysis {
         K = 1/(Math.PI*AR*e);
         System.out.println("Enter max velocity for dive");
         maxVel = input.nextDouble();
+        System.out.println("Enter Cruise velocity");
+        cruiseVel = input.nextDouble();
+        System.out.println("Enter Cruise altitude");
+        cruiseAlt = input.nextDouble();
         input.nextLine();
         while(add){
             System.out.println("Add Constraint(Y/N)");
@@ -101,6 +110,7 @@ public class ConstraintAnalysis {
                     String title = "Stall speed = " + velocity+ " at " + altitude + "m";
                     StallSpeed stall = new StallSpeed(altitude,velocity,CLmax,title);
                     constraints.add(stall);
+                    stallVel = velocity;
                     input.nextLine();
                 }else if(s.equalsIgnoreCase("ROC")){
                     System.out.println("Enter climbing altitude (-1000m-80000m)");
@@ -154,46 +164,32 @@ public class ConstraintAnalysis {
         constraints = new ArrayList<>();
         this.WS = WS;
         boolean add = true;
-        CD_0 = 0.05;
-        LDmax = 11;
-        nuProp = 0.6;;
+        CD_0 = 0.08;
+        LDmax = 12;
+        nuProp = 0.55;
         e = 0.8;
-        AR = 12;
+        AR = 9;
         K = 1/(Math.PI*AR*e);
         
         double altitude = 0;
         double velocity = 5;
-        CD_TO = 0.08;
-        CL_TO = 1.4;
-        mu = 0.1;
-        sTO = 20;
+        CD_TO = 0.12;
+        CL_TO = 1.2;
+        mu = 0.12;
+        sTO = 10;
         CL_R = 2*0.4*Atmosphere.g/(Atmosphere.getDensity(altitude)*1*Math.pow(velocity*1.2, 2));
         CD_G = CD_TO-mu*CL_TO;
         String title = "Take off distance = " + sTO + " at " + altitude + "m";
         TakeOff to = new TakeOff(mu,nuProp,CD_G,sTO,CL_R,altitude,velocity,title);
         constraints.add(to);
         
-        altitude = 1000;
-        velocity = 5;
-        mu = 0.05;
-        sTO = 20;
-        CL_R = 2*0.4*Atmosphere.g/(Atmosphere.getDensity(altitude)*1*Math.pow(velocity*1.2, 2));
-        CD_G = CD_TO-mu*CL_TO;
-        title = "Take off distance = " + sTO + " at " + altitude + "m";
-        to = new TakeOff(mu,nuProp,CD_G,sTO,CL_R,altitude,velocity,title);
-        constraints.add(to);
         
         altitude = 0;
-        velocity = 3;
+        velocity = 2;
         title = "Rate of Climb = " + velocity + " at " + altitude + "m";
         RateOfClimb climb = new RateOfClimb(nuProp,CD_0,LDmax,K,altitude,velocity,title);
         constraints.add(climb);
         
-        altitude = 1000;
-        velocity = 1;
-        title = "Rate of Climb = " + velocity + " at " + altitude + "m";
-        climb = new RateOfClimb(nuProp,CD_0,LDmax,K,altitude,velocity,title);
-        constraints.add(climb);
         
         altitude = 0;
         velocity = 30;
@@ -201,18 +197,17 @@ public class ConstraintAnalysis {
         MaxSpeed vm = new MaxSpeed(altitude,velocity,CD_0,nuProp,K,title);
         constraints.add(vm);
                     
-        altitude = 1000;
-        velocity = 15;
-        title = "Max speed = " + velocity + " at " + altitude + "m";
-        vm = new MaxSpeed(altitude,velocity,CD_0,nuProp,K,title);
-        constraints.add(vm);
         
-        altitude = 100;
-        velocity = 10;
+        altitude = 0;
+        velocity = 9;
         title = "Stall Speed = " + velocity + " at " + altitude + "m";
-        double CLmax = 1.6;
+        double CLmax = 1.4;
         StallSpeed st = new StallSpeed(altitude,velocity,CLmax,title);
         constraints.add(st);
+        stallVel = velocity;
+        
+        cruiseVel = 20;
+        cruiseAlt = 100;
         
         maxVel = 30;
     }
@@ -345,8 +340,8 @@ public class ConstraintAnalysis {
                 double[] w = new double[]{WP[1],WP[1]};
                 double max = 0;
                 for(int j  = 0; j < constraints.size();j++){
-                    if(VentumAeroTools.max(constraints.get(j).weightToPowerProp(WS)) > max && VentumAeroTools.max(constraints.get(j).weightToPowerProp(WS)) != w[0]){
-                        max = VentumAeroTools.max(constraints.get(j).weightToPowerProp(WS));
+                    if(Numerical.max(constraints.get(j).weightToPowerProp(WS)) > max && Numerical.max(constraints.get(j).weightToPowerProp(WS)) != w[0]){
+                        max = Numerical.max(constraints.get(j).weightToPowerProp(WS));
                         System.out.println(max);
                     }
                 }
